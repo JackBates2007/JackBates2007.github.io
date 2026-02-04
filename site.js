@@ -26,3 +26,5 @@ if (isEvening) {
 
 
 console.log(WelcomeMessage)
+
+localStorage.setItem("It's a secret to everybody.", "+100 Rupees")
