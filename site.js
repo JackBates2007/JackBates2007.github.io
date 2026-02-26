@@ -73,27 +73,22 @@ prev.addEventListener('click', () => {
 //To-Do List
 const newTodo = document.querySelector('#new-todo')
 const todoButton = document.querySelector('#addTodo')
-const todoList = document.querySelector(".todo-list")
-const todoLists = 
-[
-    { "text": "Watch napoelon dynamite", "completed": false },
-    { "text": "Go to work", "completed": false },
-    { "text": "Eat at Mcdonalds", "completed": false }
-]
+const todoList = document.querySelector('.todo-list')
+const todos = JSON.parse(localStorage.getItem('todo-List')) || [{'text': 'Buy Hotdogs', 'completed': false}]
 
 const renderToDos = () => {
     todoList.innerHTML = ''
 
-    todoLists.forEach ( todo => {
+    todos.forEach ( todo => {
     const li = document.createElement('li')
     li.textContent = todo.text,
     todoList.append(li)
 })}
-
+console.log(todos)
 renderToDos()
 
 todoButton.addEventListener('click', () => {
-    todoLists.push({ text: newTodo.value, completed: false }),
-    localStorage.setItem('todo-List', JSON.stringify(todoLists)),
+    todos.push({ text: newTodo.value, completed: false }),
+    localStorage.setItem('todo-List', JSON.stringify(todos)),
     renderToDos()
 })
