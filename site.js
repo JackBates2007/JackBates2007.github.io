@@ -90,8 +90,6 @@ const renderToDos = () => {
     todoList.append(li)
 })}
 
-
-localStorage.setItem('todo-List', JSON.stringify(todoLists)),
 renderToDos()
 
 todoButton.addEventListener('click', () => {
