@@ -69,3 +69,33 @@ prev.addEventListener('click', () => {
     currentImage = currentImage - 1
     showImages()
 })
+
+//To-Do List
+const newTodo = document.querySelector('#new-todo')
+const todoButton = document.querySelector('#addTodo')
+const todoList = document.querySelector(".todo-list")
+const todoLists = 
+[
+    { "text": "Watch napoelon dynamite", "completed": false },
+    { "text": "Go to work", "completed": false },
+    { "text": "Eat at Mcdonalds", "completed": false }
+]
+
+const renderToDos = () => {
+    todoList.innerHTML = ''
+
+    todoLists.forEach ( todo => {
+    const li = document.createElement('li')
+    li.textContent = todo.text,
+    todoList.append(li)
+})}
+
+
+localStorage.setItem('todo-List', JSON.stringify(todoLists)),
+renderToDos()
+
+todoButton.addEventListener('click', () => {
+    todoLists.push({ text: newTodo.value, completed: false }),
+    localStorage.setItem('todo-List', JSON.stringify(todoLists)),
+    renderToDos()
+})
