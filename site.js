@@ -1,3 +1,4 @@
+
 //Time Added
 const hours = new Date().getHours() // get the current hour
 
@@ -84,7 +85,7 @@ const renderToDos = () => {
     li.textContent = todo.text,
     todoList.append(li)
 })}
-console.log(todos)
+
 renderToDos()
 
 todoButton.addEventListener('click', () => {
@@ -92,3 +93,22 @@ todoButton.addEventListener('click', () => {
     localStorage.setItem('todo-List', JSON.stringify(todos)),
     renderToDos()
 })
+
+//API Fetch
+    const getRandomPokemon = async () => {
+        url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150)
+        const response = await fetch(url)
+        const get = await response.json()
+        return get
+    }
+
+    const renderPokemon = (async pokemon => {
+        const randomPokemon = document.querySelector('#pokemon')
+        const img = document.createElement('img')
+        const waitPokemon = await pokemon
+        img.src = waitPokemon.sprites.front_default
+        img.alt = waitPokemon.name
+        randomPokemon.append(img)
+    })
+
+    renderPokemon(getRandomPokemon())
